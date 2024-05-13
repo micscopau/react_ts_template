@@ -1,0 +1,42 @@
+{
+  "name": "frontend-template",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build:dev": "node esbuild.config.mjs true && echo \"Done building\" && docker cp ./dist/. fe:/usr/share/nginx/html && echo \"Done updating container\"",
+    "watch": "chokidar \"./src\" -c \"yarn build:dev\"",
+    "build:prod": "tsc && node esbuild.config.mjs",
+    "lint": "eslint --ext ts,tsx .",
+    "lint:fix": "yarn lint --fix",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.11",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^7.9.0",
+    "@typescript-eslint/parser": "^7.9.0",
+    "autoprefixer": "^10.4.19",
+    "chokidar-cli": "^3.0.0",
+    "esbuild": "^0.21.2",
+    "esbuild-plugin-tsc": "^0.4.0",
+    "esbuild-sass-plugin": "^3.2.0",
+    "eslint": "^9.2.0",
+    "eslint-plugin-react": "^7.31.8",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "postcss": "^8.4.38",
+    "sass": "^1.54.9",
+    "stylelint": "^16.5.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-scss": "^6.3.0",
+    "terser": "^5.15.0",
+    "typescript": "^5.4.5"
+  }
+}
